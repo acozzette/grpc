@@ -99,10 +99,10 @@ EXTERNAL_PROTO_LIBRARIES = {
 # For that we need mapping from external repo name to a corresponding
 # path to a git submodule.
 EXTERNAL_SOURCE_PREFIXES = {
-    "@upb": "third_party/upb",
     "@utf8_range": "third_party/utf8_range",
     "@com_googlesource_code_re2": "third_party/re2",
     "@com_google_googletest": "third_party/googletest",
+    "@com_google_protobuf": "third_party/upb",
     "@zlib": "third_party/zlib",
 }
 
@@ -183,7 +183,7 @@ def _extract_rules_from_bazel_xml(xml_tree):
                 "cc_proto_library",
                 "cc_proto_gen_validate",
                 "proto_library",
-                "upb_proto_library",
+                "upb_c_proto_library",
                 "upb_proto_reflection_library",
                 "alias",
                 "bind",
@@ -277,6 +277,9 @@ def _extract_sources(bazel_rule: BuildMetadata) -> List[str]:
     """Gets list of source files from a bazel rule"""
     result = []
     for src in bazel_rule["srcs"]:
+        # Skip .proto files from the protobuf repo
+        if src.startswith("@com_google_protobuf//") and src.endswith(".proto"):
+          continue
         if src.endswith(".cc") or src.endswith(".c") or src.endswith(".proto"):
             source_file_maybe = _try_extract_source_file_path(src)
             if source_file_maybe:
@@ -589,14 +592,14 @@ def _expand_upb_proto_library_rules(bazel_rules):
                     'upb rule "{0}" should have 1 proto dependency but has'
                     ' "{1}"'.format(name, deps)
                 )
-            # deps is not properly fetched from bazel query for upb_proto_library target
+            # deps is not properly fetched from bazel query for upb_c_proto_library target
             # so add the upb dependency manually
             bazel_rule["deps"] = [
                 "//external:upb_lib",
                 "//external:upb_lib_descriptor",
                 "//external:upb_generated_code_support__only_for_generated_code_do_not_use__i_give_permission_to_break_me",
             ]
-            # populate the upb_proto_library rule with pre-generated upb headers
+            # populate the upb_c_proto_library rule with pre-generated upb headers
             # and sources using proto_rule
             protos = _get_transitive_protos(bazel_rules, deps[0])
             if len(protos) == 0:
@@ -665,7 +668,7 @@ def _patch_grpc_proto_library_rules(bazel_rules):
 def _patch_descriptor_upb_proto_library(bazel_rules):
     # The upb's descriptor_upb_proto library doesn't reference the generated descriptor.proto
     # sources explicitly, so we add them manually.
-    bazel_rule = bazel_rules.get("@upb//:descriptor_upb_proto", None)
+    bazel_rule = bazel_rules.get("@com_google_protobuf//upb:descriptor_upb_proto", None)
     if bazel_rule:
         bazel_rule["srcs"].append(
             ":src/core/ext/upb-generated/google/protobuf/descriptor.upb.c"
@@ -1059,22 +1062,22 @@ _BUILD_EXTRA_METADATA = {
         "build": "all",
         "_RENAME": "address_sorting",
     },
-    "@upb//:upb": {
+    "@com_google_protobuf//upb:upb": {
         "language": "c",
         "build": "all",
         "_RENAME": "upb",
     },
-    "@upb//:collections": {
+    "@com_google_protobuf//upb/collections:collections": {
         "language": "c",
         "build": "all",
         "_RENAME": "upb_collections_lib",
     },
-    "@upb//:json": {
+    "@com_google_protobuf//upb/json:json": {
         "language": "c",
         "build": "all",
         "_RENAME": "upb_json_lib",
     },
-    "@upb//:textformat": {
+    "@com_google_protobuf//upb/text:text": {
         "language": "c",
         "build": "all",
         "_RENAME": "upb_textformat_lib",
@@ -1295,7 +1298,7 @@ _BAZEL_DEPS_QUERIES = [
     # The ^ is needed to differentiate proto_library from go_proto_library
     'deps(kind("^proto_library", @envoy_api//envoy/...))',
     # Make sure we have source info for all the targets that _expand_upb_proto_library_rules artificially adds
-    # as upb_proto_library dependencies.
+    # as upb_c_proto_library dependencies.
     'deps("//external:upb_generated_code_support__only_for_generated_code_do_not_use__i_give_permission_to_break_me")',
 ]
 
