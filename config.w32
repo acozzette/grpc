@@ -1257,9 +1257,6 @@ if (PHP_GRPC != "no") {
     "third_party\\re2\\util\\rune.cc " +
     "third_party\\re2\\util\\strutil.cc " +
     "third_party\\upb\\upb\\base\\status.c " +
-    "third_party\\upb\\upb\\collections\\array.c " +
-    "third_party\\upb\\upb\\collections\\map.c " +
-    "third_party\\upb\\upb\\collections\\map_sorter.c " +
     "third_party\\upb\\upb\\hash\\common.c " +
     "third_party\\upb\\upb\\json\\decode.c " +
     "third_party\\upb\\upb\\json\\encode.c " +
@@ -1270,6 +1267,9 @@ if (PHP_GRPC != "no") {
     "third_party\\upb\\upb\\mem\\alloc.c " +
     "third_party\\upb\\upb\\mem\\arena.c " +
     "third_party\\upb\\upb\\message\\accessors.c " +
+    "third_party\\upb\\upb\\message\\array.c " +
+    "third_party\\upb\\upb\\message\\map.c " +
+    "third_party\\upb\\upb\\message\\map_sorter.c " +
     "third_party\\upb\\upb\\message\\message.c " +
     "third_party\\upb\\upb\\mini_descriptor\\build_enum.c " +
     "third_party\\upb\\upb\\mini_descriptor\\decode.c " +
@@ -1279,7 +1279,6 @@ if (PHP_GRPC != "no") {
     "third_party\\upb\\upb\\mini_table\\extension_registry.c " +
     "third_party\\upb\\upb\\mini_table\\internal\\message.c " +
     "third_party\\upb\\upb\\mini_table\\message.c " +
-    "third_party\\upb\\upb\\reflection\\def_builder.c " +
     "third_party\\upb\\upb\\reflection\\def_pool.c " +
     "third_party\\upb\\upb\\reflection\\def_type.c " +
     "third_party\\upb\\upb\\reflection\\desc_state.c " +
@@ -1289,6 +1288,8 @@ if (PHP_GRPC != "no") {
     "third_party\\upb\\upb\\reflection\\extension_range.c " +
     "third_party\\upb\\upb\\reflection\\field_def.c " +
     "third_party\\upb\\upb\\reflection\\file_def.c " +
+    "third_party\\upb\\upb\\reflection\\internal\\def_builder.c " +
+    "third_party\\upb\\upb\\reflection\\internal\\strdup2.c " +
     "third_party\\upb\\upb\\reflection\\message.c " +
     "third_party\\upb\\upb\\reflection\\message_def.c " +
     "third_party\\upb\\upb\\reflection\\message_reserved_range.c " +
@@ -1784,7 +1785,6 @@ if (PHP_GRPC != "no") {
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\base");
-  FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\collections");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\hash");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\json");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\lex");
@@ -1795,6 +1795,7 @@ if (PHP_GRPC != "no") {
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\mini_table");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\mini_table\\internal");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\reflection");
+  FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\reflection\\internal");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\text");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\upb\\upb\\wire");
   FSO.CreateFolder(base_dir+"\\ext\\grpc\\third_party\\utf8_range");

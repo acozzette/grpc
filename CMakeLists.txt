@@ -2558,9 +2558,11 @@ target_include_directories(grpc
 )
 target_link_libraries(grpc
   ${_gRPC_ALLTARGETS_LIBRARIES}
-  ${_gRPC_RE2_LIBRARIES}
+  upb_collections_lib
   upb_json_lib
   upb_textformat_lib
+  upb
+  ${_gRPC_RE2_LIBRARIES}
   ${_gRPC_ZLIB_LIBRARIES}
   absl::algorithm_container
   absl::cleanup
@@ -3185,7 +3187,13 @@ add_library(grpc_unsecure
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
   ${gRPC_ADDITIONAL_DLL_SRC}
 )
 
@@ -3228,6 +3236,7 @@ target_link_libraries(grpc_unsecure
   ${_gRPC_ALLTARGETS_LIBRARIES}
   upb_collections_lib
   upb
+  utf8_range_lib
   ${_gRPC_ZLIB_LIBRARIES}
   absl::algorithm_container
   absl::cleanup
@@ -3419,25 +3428,8 @@ endif()
 
 add_library(upb ${_gRPC_STATIC_WIN32}
   third_party/upb/upb/base/status.c
-  third_party/upb/upb/collections/array.c
-  third_party/upb/upb/collections/map.c
-  third_party/upb/upb/collections/map_sorter.c
-  third_party/upb/upb/hash/common.c
-  third_party/upb/upb/lex/atoi.c
-  third_party/upb/upb/lex/round_trip.c
-  third_party/upb/upb/lex/strtod.c
-  third_party/upb/upb/lex/unicode.c
   third_party/upb/upb/mem/alloc.c
   third_party/upb/upb/mem/arena.c
-  third_party/upb/upb/message/message.c
-  third_party/upb/upb/mini_table/extension_registry.c
-  third_party/upb/upb/mini_table/internal/message.c
-  third_party/upb/upb/mini_table/message.c
-  third_party/upb/upb/wire/decode.c
-  third_party/upb/upb/wire/decode_fast.c
-  third_party/upb/upb/wire/encode.c
-  third_party/upb/upb/wire/eps_copy_input_stream.c
-  third_party/upb/upb/wire/reader.c
 )
 
 target_compile_features(upb PUBLIC cxx_std_14)
@@ -3473,7 +3465,6 @@ target_include_directories(upb
 )
 target_link_libraries(upb
   ${_gRPC_ALLTARGETS_LIBRARIES}
-  utf8_range_lib
 )
 
 
@@ -3491,12 +3482,12 @@ endif()
 
 add_library(upb_collections_lib ${_gRPC_STATIC_WIN32}
   third_party/upb/upb/base/status.c
-  third_party/upb/upb/collections/array.c
-  third_party/upb/upb/collections/map.c
-  third_party/upb/upb/collections/map_sorter.c
   third_party/upb/upb/hash/common.c
   third_party/upb/upb/mem/alloc.c
   third_party/upb/upb/mem/arena.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
   third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_table/extension_registry.c
   third_party/upb/upb/mini_table/internal/message.c
@@ -3553,15 +3544,29 @@ endif()
 
 add_library(upb_json_lib ${_gRPC_STATIC_WIN32}
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
+  third_party/upb/upb/base/status.c
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/json/decode.c
   third_party/upb/upb/json/encode.c
+  third_party/upb/upb/lex/atoi.c
+  third_party/upb/upb/lex/round_trip.c
+  third_party/upb/upb/lex/strtod.c
+  third_party/upb/upb/lex/unicode.c
+  third_party/upb/upb/mem/alloc.c
+  third_party/upb/upb/mem/arena.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
   third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
-  third_party/upb/upb/reflection/def_builder.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
   third_party/upb/upb/reflection/def_pool.c
   third_party/upb/upb/reflection/def_type.c
   third_party/upb/upb/reflection/desc_state.c
@@ -3571,12 +3576,19 @@ add_library(upb_json_lib ${_gRPC_STATIC_WIN32}
   third_party/upb/upb/reflection/extension_range.c
   third_party/upb/upb/reflection/field_def.c
   third_party/upb/upb/reflection/file_def.c
+  third_party/upb/upb/reflection/internal/def_builder.c
+  third_party/upb/upb/reflection/internal/strdup2.c
   third_party/upb/upb/reflection/message.c
   third_party/upb/upb/reflection/message_def.c
   third_party/upb/upb/reflection/message_reserved_range.c
   third_party/upb/upb/reflection/method_def.c
   third_party/upb/upb/reflection/oneof_def.c
   third_party/upb/upb/reflection/service_def.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 
 target_compile_features(upb_json_lib PUBLIC cxx_std_14)
@@ -3612,8 +3624,7 @@ target_include_directories(upb_json_lib
 )
 target_link_libraries(upb_json_lib
   ${_gRPC_ALLTARGETS_LIBRARIES}
-  upb_collections_lib
-  upb
+  utf8_range_lib
 )
 
 
@@ -3631,13 +3642,27 @@ endif()
 
 add_library(upb_textformat_lib ${_gRPC_STATIC_WIN32}
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
+  third_party/upb/upb/base/status.c
+  third_party/upb/upb/hash/common.c
+  third_party/upb/upb/lex/atoi.c
+  third_party/upb/upb/lex/round_trip.c
+  third_party/upb/upb/lex/strtod.c
+  third_party/upb/upb/lex/unicode.c
+  third_party/upb/upb/mem/alloc.c
+  third_party/upb/upb/mem/arena.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
   third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
-  third_party/upb/upb/reflection/def_builder.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
   third_party/upb/upb/reflection/def_pool.c
   third_party/upb/upb/reflection/def_type.c
   third_party/upb/upb/reflection/desc_state.c
@@ -3647,6 +3672,8 @@ add_library(upb_textformat_lib ${_gRPC_STATIC_WIN32}
   third_party/upb/upb/reflection/extension_range.c
   third_party/upb/upb/reflection/field_def.c
   third_party/upb/upb/reflection/file_def.c
+  third_party/upb/upb/reflection/internal/def_builder.c
+  third_party/upb/upb/reflection/internal/strdup2.c
   third_party/upb/upb/reflection/message.c
   third_party/upb/upb/reflection/message_def.c
   third_party/upb/upb/reflection/message_reserved_range.c
@@ -3654,6 +3681,11 @@ add_library(upb_textformat_lib ${_gRPC_STATIC_WIN32}
   third_party/upb/upb/reflection/oneof_def.c
   third_party/upb/upb/reflection/service_def.c
   third_party/upb/upb/text/encode.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 
 target_compile_features(upb_textformat_lib PUBLIC cxx_std_14)
@@ -3689,8 +3721,7 @@ target_include_directories(upb_textformat_lib
 )
 target_link_libraries(upb_textformat_lib
   ${_gRPC_ALLTARGETS_LIBRARIES}
-  upb_collections_lib
-  upb
+  utf8_range_lib
 )
 
 
@@ -5126,11 +5157,25 @@ add_library(grpc_authorization_provider
   src/core/tsi/alts/handshaker/transport_security_common_api.cc
   src/core/tsi/transport_security.cc
   src/core/tsi/transport_security_grpc.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 
 target_compile_features(grpc_authorization_provider PUBLIC cxx_std_14)
@@ -5167,8 +5212,9 @@ target_include_directories(grpc_authorization_provider
 )
 target_link_libraries(grpc_authorization_provider
   ${_gRPC_ALLTARGETS_LIBRARIES}
-  ${_gRPC_RE2_LIBRARIES}
   upb
+  ${_gRPC_RE2_LIBRARIES}
+  utf8_range_lib
   ${_gRPC_ZLIB_LIBRARIES}
   absl::cleanup
   absl::flat_hash_map
@@ -8814,11 +8860,25 @@ add_executable(chunked_vector_test
   src/core/lib/slice/slice_refcount.cc
   src/core/lib/slice/slice_string_helpers.cc
   test/core/gprpp/chunked_vector_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(chunked_vector_test PUBLIC cxx_std_14)
 target_include_directories(chunked_vector_test
@@ -8844,6 +8904,7 @@ target_link_libraries(chunked_vector_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::function_ref
   absl::hash
   absl::type_traits
@@ -11262,11 +11323,25 @@ add_executable(exec_ctx_wakeup_scheduler_test
   src/core/lib/slice/slice_refcount.cc
   src/core/lib/slice/slice_string_helpers.cc
   test/core/promise/exec_ctx_wakeup_scheduler_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(exec_ctx_wakeup_scheduler_test PUBLIC cxx_std_14)
 target_include_directories(exec_ctx_wakeup_scheduler_test
@@ -11292,6 +11367,7 @@ target_link_libraries(exec_ctx_wakeup_scheduler_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::hash
   absl::type_traits
   absl::statusor
@@ -11949,11 +12025,25 @@ add_executable(flow_control_test
   src/core/lib/transport/bdp_estimator.cc
   src/core/lib/transport/pid_controller.cc
   test/core/transport/chttp2/flow_control_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(flow_control_test PUBLIC cxx_std_14)
 target_include_directories(flow_control_test
@@ -11979,6 +12069,7 @@ target_link_libraries(flow_control_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::function_ref
   absl::hash
   absl::type_traits
@@ -12019,11 +12110,25 @@ add_executable(for_each_test
   src/core/lib/slice/slice_refcount.cc
   src/core/lib/slice/slice_string_helpers.cc
   test/core/promise/for_each_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(for_each_test PUBLIC cxx_std_14)
 target_include_directories(for_each_test
@@ -12049,6 +12154,7 @@ target_link_libraries(for_each_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::function_ref
   absl::hash
   absl::type_traits
@@ -14694,11 +14800,25 @@ add_executable(interceptor_list_test
   src/core/lib/slice/slice_refcount.cc
   src/core/lib/slice/slice_string_helpers.cc
   test/core/promise/interceptor_list_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(interceptor_list_test PUBLIC cxx_std_14)
 target_include_directories(interceptor_list_test
@@ -14724,6 +14844,7 @@ target_link_libraries(interceptor_list_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::function_ref
   absl::hash
   absl::type_traits
@@ -15603,11 +15724,25 @@ add_executable(map_pipe_test
   src/core/lib/slice/slice_refcount.cc
   src/core/lib/slice/slice_string_helpers.cc
   test/core/promise/map_pipe_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(map_pipe_test PUBLIC cxx_std_14)
 target_include_directories(map_pipe_test
@@ -15633,6 +15768,7 @@ target_link_libraries(map_pipe_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::function_ref
   absl::hash
   absl::type_traits
@@ -17285,11 +17421,25 @@ add_executable(periodic_update_test
   src/core/lib/slice/slice_refcount.cc
   src/core/lib/slice/slice_string_helpers.cc
   test/core/resource_quota/periodic_update_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(periodic_update_test PUBLIC cxx_std_14)
 target_include_directories(periodic_update_test
@@ -17315,6 +17465,7 @@ target_link_libraries(periodic_update_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   absl::function_ref
   absl::hash
   absl::statusor
@@ -24332,11 +24483,25 @@ add_executable(test_core_transport_chaotic_good_frame_test
   src/core/lib/uri/uri_parser.cc
   src/core/tsi/alts/handshaker/transport_security_common_api.cc
   test/core/transport/chaotic_good/frame_test.cc
+  third_party/upb/upb/hash/common.c
   third_party/upb/upb/message/accessors.c
+  third_party/upb/upb/message/array.c
+  third_party/upb/upb/message/map.c
+  third_party/upb/upb/message/map_sorter.c
+  third_party/upb/upb/message/message.c
   third_party/upb/upb/mini_descriptor/build_enum.c
   third_party/upb/upb/mini_descriptor/decode.c
   third_party/upb/upb/mini_descriptor/internal/base92.c
+  third_party/upb/upb/mini_descriptor/internal/encode.c
   third_party/upb/upb/mini_descriptor/link.c
+  third_party/upb/upb/mini_table/extension_registry.c
+  third_party/upb/upb/mini_table/internal/message.c
+  third_party/upb/upb/mini_table/message.c
+  third_party/upb/upb/wire/decode.c
+  third_party/upb/upb/wire/decode_fast.c
+  third_party/upb/upb/wire/encode.c
+  third_party/upb/upb/wire/eps_copy_input_stream.c
+  third_party/upb/upb/wire/reader.c
 )
 target_compile_features(test_core_transport_chaotic_good_frame_test PUBLIC cxx_std_14)
 target_include_directories(test_core_transport_chaotic_good_frame_test
@@ -24362,6 +24527,7 @@ target_link_libraries(test_core_transport_chaotic_good_frame_test
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gtest
   upb
+  utf8_range_lib
   ${_gRPC_ZLIB_LIBRARIES}
   absl::cleanup
   absl::flat_hash_map
@@ -30140,7 +30306,7 @@ generate_pkgconfig(
   "absl_algorithm_container absl_any_invocable absl_base absl_bind_front absl_cleanup absl_cord absl_core_headers absl_flags absl_flags_marshalling absl_flat_hash_map absl_flat_hash_set absl_function_ref absl_hash absl_inlined_vector absl_memory absl_optional absl_random_bit_gen_ref absl_random_distributions absl_random_random absl_span absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time absl_type_traits absl_utility absl_variant gpr"
   "libcares openssl re2 zlib"
   "-lgrpc"
-  "-laddress_sorting -lupb_textformat_lib -lupb_json_lib -lupb -lutf8_range_lib -lupb_collections_lib"
+  "-laddress_sorting -lupb -lupb_textformat_lib -lupb_json_lib -lutf8_range_lib -lupb_collections_lib"
   "grpc.pc")
 
 # grpc_unsecure .pc file
@@ -30151,7 +30317,7 @@ generate_pkgconfig(
   "absl_algorithm_container absl_any_invocable absl_base absl_bind_front absl_cleanup absl_cord absl_core_headers absl_flags absl_flags_marshalling absl_flat_hash_map absl_flat_hash_set absl_function_ref absl_hash absl_inlined_vector absl_memory absl_optional absl_random_bit_gen_ref absl_random_distributions absl_random_random absl_span absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time absl_type_traits absl_utility absl_variant gpr"
   "libcares zlib"
   "-lgrpc_unsecure"
-  "-laddress_sorting -lupb -lutf8_range_lib -lupb_collections_lib"
+  "-laddress_sorting -lutf8_range_lib -lupb -lupb_collections_lib"
   "grpc_unsecure.pc")
 
 # grpc++ .pc file
@@ -30162,7 +30328,7 @@ generate_pkgconfig(
   "absl_algorithm_container absl_any_invocable absl_base absl_bind_front absl_cleanup absl_cord absl_core_headers absl_flags absl_flags_marshalling absl_flat_hash_map absl_flat_hash_set absl_function_ref absl_hash absl_inlined_vector absl_memory absl_optional absl_random_bit_gen_ref absl_random_distributions absl_random_random absl_span absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time absl_type_traits absl_utility absl_variant gpr grpc"
   "libcares openssl re2 zlib"
   "-lgrpc++"
-  "-laddress_sorting -lupb_textformat_lib -lupb_json_lib -lupb -lutf8_range_lib -lupb_collections_lib"
+  "-laddress_sorting -lupb -lupb_textformat_lib -lupb_json_lib -lutf8_range_lib -lupb_collections_lib"
   "grpc++.pc")
 
 # grpc++_unsecure .pc file
@@ -30173,5 +30339,5 @@ generate_pkgconfig(
   "absl_algorithm_container absl_any_invocable absl_base absl_bind_front absl_cleanup absl_cord absl_core_headers absl_flags absl_flags_marshalling absl_flat_hash_map absl_flat_hash_set absl_function_ref absl_hash absl_inlined_vector absl_memory absl_optional absl_random_bit_gen_ref absl_random_distributions absl_random_random absl_span absl_status absl_statusor absl_str_format absl_strings absl_synchronization absl_time absl_type_traits absl_utility absl_variant gpr grpc_unsecure"
   "libcares zlib"
   "-lgrpc++_unsecure"
-  "-laddress_sorting -lupb -lutf8_range_lib -lupb_collections_lib"
+  "-laddress_sorting -lutf8_range_lib -lupb -lupb_collections_lib"
   "grpc++_unsecure.pc")
