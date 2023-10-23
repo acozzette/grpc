@@ -159,7 +159,7 @@ def get_bazel_bin_root_path(elink, file):
             "google",
             "protobuf",
             "_virtual_imports",
-            "%s_proto" % name
+            "%s_proto" % name,
         )
         return os.path.join(result, file)
     if elink[0].startswith("@"):

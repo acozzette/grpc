@@ -279,7 +279,7 @@ def _extract_sources(bazel_rule: BuildMetadata) -> List[str]:
     for src in bazel_rule["srcs"]:
         # Skip .proto files from the protobuf repo
         if src.startswith("@com_google_protobuf//") and src.endswith(".proto"):
-          continue
+            continue
         if src.endswith(".cc") or src.endswith(".c") or src.endswith(".proto"):
             source_file_maybe = _try_extract_source_file_path(src)
             if source_file_maybe:
@@ -668,7 +668,9 @@ def _patch_grpc_proto_library_rules(bazel_rules):
 def _patch_descriptor_upb_proto_library(bazel_rules):
     # The upb's descriptor_upb_proto library doesn't reference the generated descriptor.proto
     # sources explicitly, so we add them manually.
-    bazel_rule = bazel_rules.get("@com_google_protobuf//upb:descriptor_upb_proto", None)
+    bazel_rule = bazel_rules.get(
+        "@com_google_protobuf//upb:descriptor_upb_proto", None
+    )
     if bazel_rule:
         bazel_rule["srcs"].append(
             ":src/core/ext/upb-generated/google/protobuf/descriptor.upb.c"
