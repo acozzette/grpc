@@ -256,6 +256,8 @@ for filename in filename_list:
         or filename.endswith(".upb.c")
         or filename.endswith(".upbdefs.h")
         or filename.endswith(".upbdefs.c")
+        or filename.endswith(".upb_minitable.h")
+        or filename.endswith(".upb_minitable.c")
     ):
         continue
     ok = ok and validator.check(filename, args.fix)
