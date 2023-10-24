@@ -633,18 +633,19 @@ def _expand_upb_proto_library_rules(bazel_rules):
                         )
                     )
 
-                ext = (
-                    ".upb"
+                extensions = (
+                    [".upb", ".upb_minitable"]
                     if gen_func == "grpc_upb_proto_library"
-                    else ".upbdefs"
+                    else [".upbdefs"]
                 )
                 root = (
                     GEN_UPB_ROOT
                     if gen_func == "grpc_upb_proto_library"
                     else GEN_UPBDEFS_ROOT
                 )
-                srcs.append(root + proto_src_file.replace(".proto", ext + ".c"))
-                hdrs.append(root + proto_src_file.replace(".proto", ext + ".h"))
+                for ext in extensions:
+                    srcs.append(root + proto_src_file.replace(".proto", ext + ".c"))
+                    hdrs.append(root + proto_src_file.replace(".proto", ext + ".h"))
             bazel_rule["srcs"] = srcs
             bazel_rule["hdrs"] = hdrs
 
