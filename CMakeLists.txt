@@ -1854,168 +1854,331 @@ add_library(grpc
   src/core/ext/transport/inproc/inproc_transport.cc
   src/core/ext/transport/inproc/legacy_inproc_transport.cc
   src/core/ext/upb-generated/envoy/admin/v3/certs.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/certs.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/clusters.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/clusters.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/config_dump.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/config_dump.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/config_dump_shared.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/config_dump_shared.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/init_dump.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/init_dump.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/listeners.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/listeners.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/memory.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/memory.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/metrics.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/metrics.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/mutex_stats.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/mutex_stats.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/server_info.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/server_info.upb_minitable.c
   src/core/ext/upb-generated/envoy/admin/v3/tap.upb.c
+  src/core/ext/upb-generated/envoy/admin/v3/tap.upb_minitable.c
   src/core/ext/upb-generated/envoy/annotations/deprecation.upb.c
+  src/core/ext/upb-generated/envoy/annotations/deprecation.upb_minitable.c
   src/core/ext/upb-generated/envoy/annotations/resource.upb.c
+  src/core/ext/upb-generated/envoy/annotations/resource.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/accesslog/v3/accesslog.upb.c
+  src/core/ext/upb-generated/envoy/config/accesslog/v3/accesslog.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/bootstrap/v3/bootstrap.upb.c
+  src/core/ext/upb-generated/envoy/config/bootstrap/v3/bootstrap.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/cluster/v3/circuit_breaker.upb.c
+  src/core/ext/upb-generated/envoy/config/cluster/v3/circuit_breaker.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/cluster/v3/cluster.upb.c
+  src/core/ext/upb-generated/envoy/config/cluster/v3/cluster.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/cluster/v3/filter.upb.c
+  src/core/ext/upb-generated/envoy/config/cluster/v3/filter.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/cluster/v3/outlier_detection.upb.c
+  src/core/ext/upb-generated/envoy/config/cluster/v3/outlier_detection.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/common/matcher/v3/matcher.upb.c
+  src/core/ext/upb-generated/envoy/config/common/matcher/v3/matcher.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/address.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/address.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/backoff.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/backoff.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/base.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/base.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/config_source.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/config_source.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/event_service_config.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/event_service_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/extension.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/extension.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/grpc_method_list.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/grpc_method_list.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/grpc_service.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/grpc_service.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/health_check.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/health_check.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/http_uri.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/http_uri.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/protocol.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/protocol.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/proxy_protocol.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/proxy_protocol.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/resolver.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/resolver.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/socket_option.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/socket_option.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/substitution_format_string.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/substitution_format_string.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/udp_socket_config.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/udp_socket_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/endpoint/v3/endpoint.upb.c
+  src/core/ext/upb-generated/envoy/config/endpoint/v3/endpoint.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/endpoint/v3/endpoint_components.upb.c
+  src/core/ext/upb-generated/envoy/config/endpoint/v3/endpoint_components.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/endpoint/v3/load_report.upb.c
+  src/core/ext/upb-generated/envoy/config/endpoint/v3/load_report.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/listener/v3/api_listener.upb.c
+  src/core/ext/upb-generated/envoy/config/listener/v3/api_listener.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/listener/v3/listener.upb.c
+  src/core/ext/upb-generated/envoy/config/listener/v3/listener.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/listener/v3/listener_components.upb.c
+  src/core/ext/upb-generated/envoy/config/listener/v3/listener_components.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/listener/v3/quic_config.upb.c
+  src/core/ext/upb-generated/envoy/config/listener/v3/quic_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/listener/v3/udp_listener_config.upb.c
+  src/core/ext/upb-generated/envoy/config/listener/v3/udp_listener_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/metrics/v3/metrics_service.upb.c
+  src/core/ext/upb-generated/envoy/config/metrics/v3/metrics_service.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/metrics/v3/stats.upb.c
+  src/core/ext/upb-generated/envoy/config/metrics/v3/stats.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/overload/v3/overload.upb.c
+  src/core/ext/upb-generated/envoy/config/overload/v3/overload.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/rbac/v3/rbac.upb.c
+  src/core/ext/upb-generated/envoy/config/rbac/v3/rbac.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/route/v3/route.upb.c
+  src/core/ext/upb-generated/envoy/config/route/v3/route.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/route/v3/route_components.upb.c
+  src/core/ext/upb-generated/envoy/config/route/v3/route_components.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/route/v3/scoped_route.upb.c
+  src/core/ext/upb-generated/envoy/config/route/v3/scoped_route.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/tap/v3/common.upb.c
+  src/core/ext/upb-generated/envoy/config/tap/v3/common.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/datadog.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/datadog.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/dynamic_ot.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/dynamic_ot.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/http_tracer.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/http_tracer.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/lightstep.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/lightstep.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/opencensus.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/opencensus.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/opentelemetry.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/opentelemetry.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/service.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/service.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/skywalking.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/skywalking.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/trace.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/trace.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/xray.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/xray.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/trace/v3/zipkin.upb.c
+  src/core/ext/upb-generated/envoy/config/trace/v3/zipkin.upb_minitable.c
   src/core/ext/upb-generated/envoy/data/accesslog/v3/accesslog.upb.c
+  src/core/ext/upb-generated/envoy/data/accesslog/v3/accesslog.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/clusters/aggregate/v3/cluster.upb.c
+  src/core/ext/upb-generated/envoy/extensions/clusters/aggregate/v3/cluster.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/filters/common/fault/v3/fault.upb.c
+  src/core/ext/upb-generated/envoy/extensions/filters/common/fault/v3/fault.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/filters/http/fault/v3/fault.upb.c
+  src/core/ext/upb-generated/envoy/extensions/filters/http/fault/v3/fault.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/filters/http/rbac/v3/rbac.upb.c
+  src/core/ext/upb-generated/envoy/extensions/filters/http/rbac/v3/rbac.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/filters/http/router/v3/router.upb.c
+  src/core/ext/upb-generated/envoy/extensions/filters/http/router/v3/router.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/filters/http/stateful_session/v3/stateful_session.upb.c
+  src/core/ext/upb-generated/envoy/extensions/filters/http/stateful_session/v3/stateful_session.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/filters/network/http_connection_manager/v3/http_connection_manager.upb.c
+  src/core/ext/upb-generated/envoy/extensions/filters/network/http_connection_manager/v3/http_connection_manager.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/http/stateful_session/cookie/v3/cookie.upb.c
+  src/core/ext/upb-generated/envoy/extensions/http/stateful_session/cookie/v3/cookie.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/client_side_weighted_round_robin/v3/client_side_weighted_round_robin.upb.c
+  src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/client_side_weighted_round_robin/v3/client_side_weighted_round_robin.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/common/v3/common.upb.c
+  src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/common/v3/common.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/pick_first/v3/pick_first.upb.c
+  src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/pick_first/v3/pick_first.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/ring_hash/v3/ring_hash.upb.c
+  src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/ring_hash/v3/ring_hash.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/wrr_locality/v3/wrr_locality.upb.c
+  src/core/ext/upb-generated/envoy/extensions/load_balancing_policies/wrr_locality/v3/wrr_locality.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/cert.upb.c
+  src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/cert.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/common.upb.c
+  src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/common.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/secret.upb.c
+  src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/secret.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/tls.upb.c
+  src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/tls.upb_minitable.c
   src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/tls_spiffe_validator_config.upb.c
+  src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3/tls_spiffe_validator_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/service/discovery/v3/ads.upb.c
+  src/core/ext/upb-generated/envoy/service/discovery/v3/ads.upb_minitable.c
   src/core/ext/upb-generated/envoy/service/discovery/v3/discovery.upb.c
+  src/core/ext/upb-generated/envoy/service/discovery/v3/discovery.upb_minitable.c
   src/core/ext/upb-generated/envoy/service/load_stats/v3/lrs.upb.c
+  src/core/ext/upb-generated/envoy/service/load_stats/v3/lrs.upb_minitable.c
   src/core/ext/upb-generated/envoy/service/status/v3/csds.upb.c
+  src/core/ext/upb-generated/envoy/service/status/v3/csds.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/http/v3/cookie.upb.c
+  src/core/ext/upb-generated/envoy/type/http/v3/cookie.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/http/v3/path_transformation.upb.c
+  src/core/ext/upb-generated/envoy/type/http/v3/path_transformation.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/filter_state.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/filter_state.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/http_inputs.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/http_inputs.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/metadata.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/metadata.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/node.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/node.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/number.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/number.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/path.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/path.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/regex.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/regex.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/status_code_input.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/status_code_input.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/string.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/string.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/struct.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/struct.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/value.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/value.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/metadata/v3/metadata.upb.c
+  src/core/ext/upb-generated/envoy/type/metadata/v3/metadata.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/tracing/v3/custom_tag.upb.c
+  src/core/ext/upb-generated/envoy/type/tracing/v3/custom_tag.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/hash_policy.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/hash_policy.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/http.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/http.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/http_status.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/http_status.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/percent.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/percent.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/range.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/range.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/ratelimit_strategy.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/ratelimit_strategy.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/ratelimit_unit.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/ratelimit_unit.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/semantic_version.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/semantic_version.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/token_bucket.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/token_bucket.upb_minitable.c
   src/core/ext/upb-generated/google/api/annotations.upb.c
+  src/core/ext/upb-generated/google/api/annotations.upb_minitable.c
   src/core/ext/upb-generated/google/api/expr/v1alpha1/checked.upb.c
+  src/core/ext/upb-generated/google/api/expr/v1alpha1/checked.upb_minitable.c
   src/core/ext/upb-generated/google/api/expr/v1alpha1/syntax.upb.c
+  src/core/ext/upb-generated/google/api/expr/v1alpha1/syntax.upb_minitable.c
   src/core/ext/upb-generated/google/api/http.upb.c
+  src/core/ext/upb-generated/google/api/http.upb_minitable.c
   src/core/ext/upb-generated/google/api/httpbody.upb.c
+  src/core/ext/upb-generated/google/api/httpbody.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
+  src/core/ext/upb-generated/google/protobuf/descriptor.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/duration.upb.c
+  src/core/ext/upb-generated/google/protobuf/duration.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/empty.upb.c
+  src/core/ext/upb-generated/google/protobuf/empty.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/struct.upb.c
+  src/core/ext/upb-generated/google/protobuf/struct.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/timestamp.upb.c
+  src/core/ext/upb-generated/google/protobuf/timestamp.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/wrappers.upb.c
+  src/core/ext/upb-generated/google/protobuf/wrappers.upb_minitable.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/ext/upb-generated/opencensus/proto/trace/v1/trace_config.upb.c
+  src/core/ext/upb-generated/opencensus/proto/trace/v1/trace_config.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/health/v1/health.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/health/v1/health.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/lb/v1/load_balancer.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/lb/v1/load_balancer.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/lookup/v1/rls.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/lookup/v1/rls.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/lookup/v1/rls_config.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/lookup/v1/rls_config.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/migrate.upb.c
+  src/core/ext/upb-generated/udpa/annotations/migrate.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/security.upb.c
+  src/core/ext/upb-generated/udpa/annotations/security.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/sensitive.upb.c
+  src/core/ext/upb-generated/udpa/annotations/sensitive.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/status.upb.c
+  src/core/ext/upb-generated/udpa/annotations/status.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/versioning.upb.c
+  src/core/ext/upb-generated/udpa/annotations/versioning.upb_minitable.c
   src/core/ext/upb-generated/validate/validate.upb.c
+  src/core/ext/upb-generated/validate/validate.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/migrate.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/migrate.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/security.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/security.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/sensitive.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/sensitive.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/status.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/status.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/versioning.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/versioning.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/authority.upb.c
+  src/core/ext/upb-generated/xds/core/v3/authority.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/cidr.upb.c
+  src/core/ext/upb-generated/xds/core/v3/cidr.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/collection_entry.upb.c
+  src/core/ext/upb-generated/xds/core/v3/collection_entry.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/context_params.upb.c
+  src/core/ext/upb-generated/xds/core/v3/context_params.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/extension.upb.c
+  src/core/ext/upb-generated/xds/core/v3/extension.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/resource.upb.c
+  src/core/ext/upb-generated/xds/core/v3/resource.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/resource_locator.upb.c
+  src/core/ext/upb-generated/xds/core/v3/resource_locator.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/resource_name.upb.c
+  src/core/ext/upb-generated/xds/core/v3/resource_name.upb_minitable.c
   src/core/ext/upb-generated/xds/data/orca/v3/orca_load_report.upb.c
+  src/core/ext/upb-generated/xds/data/orca/v3/orca_load_report.upb_minitable.c
   src/core/ext/upb-generated/xds/service/orca/v3/orca.upb.c
+  src/core/ext/upb-generated/xds/service/orca/v3/orca.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/cel.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/cel.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/domain.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/domain.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/http_inputs.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/http_inputs.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/ip.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/ip.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/matcher.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/matcher.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/range.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/range.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/regex.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/regex.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/string.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/string.upb_minitable.c
   src/core/ext/upb-generated/xds/type/v3/cel.upb.c
+  src/core/ext/upb-generated/xds/type/v3/cel.upb_minitable.c
   src/core/ext/upb-generated/xds/type/v3/range.upb.c
+  src/core/ext/upb-generated/xds/type/v3/range.upb_minitable.c
   src/core/ext/upb-generated/xds/type/v3/typed_struct.upb.c
+  src/core/ext/upb-generated/xds/type/v3/typed_struct.upb_minitable.c
   src/core/ext/upbdefs-generated/envoy/admin/v3/certs.upbdefs.c
   src/core/ext/upbdefs-generated/envoy/admin/v3/clusters.upbdefs.c
   src/core/ext/upbdefs-generated/envoy/admin/v3/config_dump.upbdefs.c
@@ -2899,24 +3062,43 @@ add_library(grpc_unsecure
   src/core/ext/transport/inproc/inproc_transport.cc
   src/core/ext/transport/inproc/legacy_inproc_transport.cc
   src/core/ext/upb-generated/google/api/annotations.upb.c
+  src/core/ext/upb-generated/google/api/annotations.upb_minitable.c
   src/core/ext/upb-generated/google/api/http.upb.c
+  src/core/ext/upb-generated/google/api/http.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
+  src/core/ext/upb-generated/google/protobuf/descriptor.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/duration.upb.c
+  src/core/ext/upb-generated/google/protobuf/duration.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/empty.upb.c
+  src/core/ext/upb-generated/google/protobuf/empty.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/struct.upb.c
+  src/core/ext/upb-generated/google/protobuf/struct.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/timestamp.upb.c
+  src/core/ext/upb-generated/google/protobuf/timestamp.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/wrappers.upb.c
+  src/core/ext/upb-generated/google/protobuf/wrappers.upb_minitable.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/health/v1/health.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/health/v1/health.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/lb/v1/load_balancer.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/lb/v1/load_balancer.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/lookup/v1/rls.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/lookup/v1/rls.upb_minitable.c
   src/core/ext/upb-generated/validate/validate.upb.c
+  src/core/ext/upb-generated/validate/validate.upb_minitable.c
   src/core/ext/upb-generated/xds/data/orca/v3/orca_load_report.upb.c
+  src/core/ext/upb-generated/xds/data/orca/v3/orca_load_report.upb_minitable.c
   src/core/ext/upb-generated/xds/service/orca/v3/orca.upb.c
+  src/core/ext/upb-generated/xds/service/orca/v3/orca.upb_minitable.c
   src/core/lib/address_utils/parse_address.cc
   src/core/lib/address_utils/sockaddr_utils.cc
   src/core/lib/backoff/backoff.cc
@@ -4898,11 +5080,16 @@ endif()
 
 add_library(grpc_authorization_provider
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb_minitable.c
   src/core/lib/address_utils/parse_address.cc
   src/core/lib/address_utils/sockaddr_utils.cc
   src/core/lib/backoff/backoff.cc
@@ -8092,92 +8279,179 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(cel_authorization_engine_test
   src/core/ext/upb-generated/envoy/annotations/deprecation.upb.c
+  src/core/ext/upb-generated/envoy/annotations/deprecation.upb_minitable.c
   src/core/ext/upb-generated/envoy/annotations/resource.upb.c
+  src/core/ext/upb-generated/envoy/annotations/resource.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/address.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/address.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/backoff.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/backoff.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/base.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/base.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/config_source.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/config_source.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/event_service_config.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/event_service_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/extension.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/extension.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/grpc_method_list.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/grpc_method_list.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/grpc_service.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/grpc_service.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/health_check.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/health_check.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/http_uri.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/http_uri.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/protocol.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/protocol.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/proxy_protocol.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/proxy_protocol.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/resolver.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/resolver.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/socket_option.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/socket_option.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/substitution_format_string.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/substitution_format_string.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/core/v3/udp_socket_config.upb.c
+  src/core/ext/upb-generated/envoy/config/core/v3/udp_socket_config.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/rbac/v3/rbac.upb.c
+  src/core/ext/upb-generated/envoy/config/rbac/v3/rbac.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/route/v3/route.upb.c
+  src/core/ext/upb-generated/envoy/config/route/v3/route.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/route/v3/route_components.upb.c
+  src/core/ext/upb-generated/envoy/config/route/v3/route_components.upb_minitable.c
   src/core/ext/upb-generated/envoy/config/route/v3/scoped_route.upb.c
+  src/core/ext/upb-generated/envoy/config/route/v3/scoped_route.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/filter_state.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/filter_state.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/http_inputs.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/http_inputs.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/metadata.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/metadata.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/node.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/node.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/number.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/number.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/path.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/path.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/regex.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/regex.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/status_code_input.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/status_code_input.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/string.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/string.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/struct.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/struct.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/matcher/v3/value.upb.c
+  src/core/ext/upb-generated/envoy/type/matcher/v3/value.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/metadata/v3/metadata.upb.c
+  src/core/ext/upb-generated/envoy/type/metadata/v3/metadata.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/tracing/v3/custom_tag.upb.c
+  src/core/ext/upb-generated/envoy/type/tracing/v3/custom_tag.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/hash_policy.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/hash_policy.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/http.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/http.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/http_status.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/http_status.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/percent.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/percent.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/range.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/range.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/ratelimit_strategy.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/ratelimit_strategy.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/ratelimit_unit.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/ratelimit_unit.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/semantic_version.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/semantic_version.upb_minitable.c
   src/core/ext/upb-generated/envoy/type/v3/token_bucket.upb.c
+  src/core/ext/upb-generated/envoy/type/v3/token_bucket.upb_minitable.c
   src/core/ext/upb-generated/google/api/annotations.upb.c
+  src/core/ext/upb-generated/google/api/annotations.upb_minitable.c
   src/core/ext/upb-generated/google/api/expr/v1alpha1/checked.upb.c
+  src/core/ext/upb-generated/google/api/expr/v1alpha1/checked.upb_minitable.c
   src/core/ext/upb-generated/google/api/expr/v1alpha1/syntax.upb.c
+  src/core/ext/upb-generated/google/api/expr/v1alpha1/syntax.upb_minitable.c
   src/core/ext/upb-generated/google/api/http.upb.c
+  src/core/ext/upb-generated/google/api/http.upb_minitable.c
   src/core/ext/upb-generated/google/api/httpbody.upb.c
+  src/core/ext/upb-generated/google/api/httpbody.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
+  src/core/ext/upb-generated/google/protobuf/descriptor.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/duration.upb.c
+  src/core/ext/upb-generated/google/protobuf/duration.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/empty.upb.c
+  src/core/ext/upb-generated/google/protobuf/empty.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/struct.upb.c
+  src/core/ext/upb-generated/google/protobuf/struct.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/timestamp.upb.c
+  src/core/ext/upb-generated/google/protobuf/timestamp.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/wrappers.upb.c
+  src/core/ext/upb-generated/google/protobuf/wrappers.upb_minitable.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/migrate.upb.c
+  src/core/ext/upb-generated/udpa/annotations/migrate.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/security.upb.c
+  src/core/ext/upb-generated/udpa/annotations/security.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/sensitive.upb.c
+  src/core/ext/upb-generated/udpa/annotations/sensitive.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/status.upb.c
+  src/core/ext/upb-generated/udpa/annotations/status.upb_minitable.c
   src/core/ext/upb-generated/udpa/annotations/versioning.upb.c
+  src/core/ext/upb-generated/udpa/annotations/versioning.upb_minitable.c
   src/core/ext/upb-generated/validate/validate.upb.c
+  src/core/ext/upb-generated/validate/validate.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/migrate.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/migrate.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/security.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/security.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/sensitive.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/sensitive.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/status.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/status.upb_minitable.c
   src/core/ext/upb-generated/xds/annotations/v3/versioning.upb.c
+  src/core/ext/upb-generated/xds/annotations/v3/versioning.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/authority.upb.c
+  src/core/ext/upb-generated/xds/core/v3/authority.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/cidr.upb.c
+  src/core/ext/upb-generated/xds/core/v3/cidr.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/collection_entry.upb.c
+  src/core/ext/upb-generated/xds/core/v3/collection_entry.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/context_params.upb.c
+  src/core/ext/upb-generated/xds/core/v3/context_params.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/extension.upb.c
+  src/core/ext/upb-generated/xds/core/v3/extension.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/resource.upb.c
+  src/core/ext/upb-generated/xds/core/v3/resource.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/resource_locator.upb.c
+  src/core/ext/upb-generated/xds/core/v3/resource_locator.upb_minitable.c
   src/core/ext/upb-generated/xds/core/v3/resource_name.upb.c
+  src/core/ext/upb-generated/xds/core/v3/resource_name.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/cel.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/cel.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/domain.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/domain.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/http_inputs.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/http_inputs.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/ip.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/ip.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/matcher.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/matcher.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/range.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/range.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/regex.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/regex.upb_minitable.c
   src/core/ext/upb-generated/xds/type/matcher/v3/string.upb.c
+  src/core/ext/upb-generated/xds/type/matcher/v3/string.upb_minitable.c
   src/core/ext/upb-generated/xds/type/v3/cel.upb.c
+  src/core/ext/upb-generated/xds/type/v3/cel.upb_minitable.c
   src/core/ext/upb-generated/xds/type/v3/range.upb.c
+  src/core/ext/upb-generated/xds/type/v3/range.upb_minitable.c
   src/core/ext/upb-generated/xds/type/v3/typed_struct.upb.c
+  src/core/ext/upb-generated/xds/type/v3/typed_struct.upb_minitable.c
   src/core/lib/security/authorization/cel_authorization_engine.cc
   test/core/security/cel_authorization_engine_test.cc
   test/core/util/cmdline.cc
@@ -8833,8 +9107,10 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(chunked_vector_test
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/event_engine/memory_allocator.cc
   src/core/lib/experiments/config.cc
@@ -11304,8 +11580,10 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(exec_ctx_wakeup_scheduler_test
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/experiments/config.cc
   src/core/lib/experiments/experiments.cc
@@ -11997,8 +12275,10 @@ add_executable(flow_control_test
   src/core/ext/transport/chttp2/transport/flow_control.cc
   src/core/ext/transport/chttp2/transport/http2_settings.cc
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/event_engine/memory_allocator.cc
   src/core/lib/experiments/config.cc
@@ -12083,8 +12363,10 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(for_each_test
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/event_engine/memory_allocator.cc
   src/core/lib/experiments/config.cc
@@ -14773,8 +15055,10 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(interceptor_list_test
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/event_engine/memory_allocator.cc
   src/core/lib/experiments/config.cc
@@ -15697,8 +15981,10 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(map_pipe_test
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/event_engine/memory_allocator.cc
   src/core/lib/experiments/config.cc
@@ -17402,8 +17688,10 @@ if(gRPC_BUILD_TESTS)
 
 add_executable(periodic_update_test
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/lib/debug/trace.cc
   src/core/lib/experiments/config.cc
   src/core/lib/experiments/experiments.cc
@@ -24252,11 +24540,16 @@ add_executable(test_core_transport_chaotic_good_frame_test
   src/core/ext/transport/chttp2/transport/huffsyms.cc
   src/core/ext/transport/chttp2/transport/varint.cc
   src/core/ext/upb-generated/google/protobuf/any.upb.c
+  src/core/ext/upb-generated/google/protobuf/any.upb_minitable.c
   src/core/ext/upb-generated/google/protobuf/descriptor.upb.c
   src/core/ext/upb-generated/google/rpc/status.upb.c
+  src/core/ext/upb-generated/google/rpc/status.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/altscontext.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/handshaker.upb_minitable.c
   src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb.c
+  src/core/ext/upb-generated/src/proto/grpc/gcp/transport_security_common.upb_minitable.c
   src/core/lib/address_utils/parse_address.cc
   src/core/lib/address_utils/sockaddr_utils.cc
   src/core/lib/backoff/backoff.cc
