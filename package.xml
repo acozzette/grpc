@@ -2971,8 +2971,6 @@
     <file baseinstalldir="/" name="third_party/upb/upb/mini_table/message.h" role="src" />
     <file baseinstalldir="/" name="third_party/upb/upb/mini_table/sub.h" role="src" />
     <file baseinstalldir="/" name="third_party/upb/upb/port/atomic.h" role="src" />
-    <file baseinstalldir="/" name="third_party/upb/upb/port/def.inc" role="src" />
-    <file baseinstalldir="/" name="third_party/upb/upb/port/undef.inc" role="src" />
     <file baseinstalldir="/" name="third_party/upb/upb/port/vsnprintf_compat.h" role="src" />
     <file baseinstalldir="/" name="third_party/upb/upb/reflection/common.h" role="src" />
     <file baseinstalldir="/" name="third_party/upb/upb/reflection/def.h" role="src" />

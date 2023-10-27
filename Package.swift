@@ -2077,8 +2077,6 @@ let package = Package(
         "third_party/upb/upb/mini_table/message.h",
         "third_party/upb/upb/mini_table/sub.h",
         "third_party/upb/upb/port/atomic.h",
-        "third_party/upb/upb/port/def.inc",
-        "third_party/upb/upb/port/undef.inc",
         "third_party/upb/upb/port/vsnprintf_compat.h",
         "third_party/upb/upb/reflection/common.h",
         "third_party/upb/upb/reflection/def.h",
