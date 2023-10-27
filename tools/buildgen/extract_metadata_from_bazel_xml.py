@@ -644,8 +644,12 @@ def _expand_upb_proto_library_rules(bazel_rules):
                     else GEN_UPBDEFS_ROOT
                 )
                 for ext in extensions:
-                    srcs.append(root + proto_src_file.replace(".proto", ext + ".c"))
-                    hdrs.append(root + proto_src_file.replace(".proto", ext + ".h"))
+                    srcs.append(
+                        root + proto_src_file.replace(".proto", ext + ".c")
+                    )
+                    hdrs.append(
+                        root + proto_src_file.replace(".proto", ext + ".h")
+                    )
             bazel_rule["srcs"] = srcs
             bazel_rule["hdrs"] = hdrs
 
