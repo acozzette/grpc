@@ -3347,6 +3347,8 @@ libs:
   - third_party/upb/upb/mem/arena.hpp
   - third_party/upb/upb/mem/internal/arena.h
   - third_party/upb/upb/port/atomic.h
+  - third_party/upb/upb/port/def.inc
+  - third_party/upb/upb/port/undef.inc
   - third_party/upb/upb/port/vsnprintf_compat.h
   - third_party/upb/upb/upb.hpp
   src:
@@ -3401,6 +3403,8 @@ libs:
   - third_party/upb/upb/mini_table/message.h
   - third_party/upb/upb/mini_table/sub.h
   - third_party/upb/upb/port/atomic.h
+  - third_party/upb/upb/port/def.inc
+  - third_party/upb/upb/port/undef.inc
   - third_party/upb/upb/port/vsnprintf_compat.h
   src:
   - third_party/upb/upb/base/status.c
@@ -3478,6 +3482,8 @@ libs:
   - third_party/upb/upb/mini_table/message.h
   - third_party/upb/upb/mini_table/sub.h
   - third_party/upb/upb/port/atomic.h
+  - third_party/upb/upb/port/def.inc
+  - third_party/upb/upb/port/undef.inc
   - third_party/upb/upb/port/vsnprintf_compat.h
   - third_party/upb/upb/reflection/common.h
   - third_party/upb/upb/reflection/def.h
@@ -3631,6 +3637,8 @@ libs:
   - third_party/upb/upb/mini_table/message.h
   - third_party/upb/upb/mini_table/sub.h
   - third_party/upb/upb/port/atomic.h
+  - third_party/upb/upb/port/def.inc
+  - third_party/upb/upb/port/undef.inc
   - third_party/upb/upb/port/vsnprintf_compat.h
   - third_party/upb/upb/reflection/common.h
   - third_party/upb/upb/reflection/def.h
